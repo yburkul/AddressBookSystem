@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+
 namespace AddressBook
 {
     class ContactDetails
@@ -9,10 +12,10 @@ namespace AddressBook
         public string Address;
         public string City;
         public string State;
-        public string Zipcode;
-        public string PhoneNumber;
+        public int Zipcode;
+        public int PhoneNumber;
         public string EmailId;
-        public ContactDetails(string FirstName, string LastName, string Address, string City, string State, string Zipcode, string PhoneNumber, string EmailId)
+        public ContactDetails(string FirstName, string LastName, string Address, string City, string State, int Zipcode, int PhoneNumber, string EmailId)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
@@ -23,31 +26,64 @@ namespace AddressBook
             this.PhoneNumber = PhoneNumber;
             this.EmailId = EmailId;
         }
+        public string toString()
+        {
+            return " Details of " + FirstName + " " + LastName + " are: " + "Address: " + Address + " City: " + City + "\n"
+                                  + "                                   " + " State:   " + State + " Zipcode: " + Zipcode + "\n"
+                                  + "                                   " + "Phone Number:" + PhoneNumber + "\n"
+                                  + "                                   " + "EmailId: " + EmailId;
+        }
     }
     class Program
     {
+        private ArrayList contactDetailsList;
+        private Dictionary<string, ContactDetails> contactDetailsMap;
+        public Program()
+        {
+            contactDetailsList = new ArrayList();
+            contactDetailsMap = new Dictionary<string, ContactDetails>();
+        }
+        public void AddDetails(string FirstName, string LastName, string Address, string City, string State, int Zipcode, int PhoneNumber, string EmailId)
+        {
+            ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
+            contactDetailsList.Add(contactDetails);
+            contactDetailsMap.Add(FirstName, contactDetails);
+        }
+        public void ComputeDetails()
+        {
+            foreach (ContactDetails contact in contactDetailsList)
+            {
+                Console.WriteLine(contact.toString());
+            }
+        }
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Address Book");
+            Program details = new Program();
+            Console.WriteLine("Enter The number of person: ");
+            int noOfPerson = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < noOfPerson; i++)
+            {
+                Console.WriteLine("Enter Your First name");
+                string FirstName = Console.ReadLine();
+                Console.WriteLine("Enter Your Last name");
+                string LastName = Console.ReadLine();
+                Console.WriteLine("Enter Your Address");
+                string Address = Console.ReadLine();
+                Console.WriteLine("Enter Your City");
+                string City = Console.ReadLine();
+                Console.WriteLine("Enter Your State");
+                string State = Console.ReadLine();
+                Console.WriteLine("Enter Your Zipcode");
+                int Zipcode = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Your Phone number");
+                int PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Your Email Id");
+                string EmailId = Console.ReadLine();
 
-            Console.WriteLine("Enter Your First name");
-            string FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Your Last name");
-            string LastName = Console.ReadLine();
-            Console.WriteLine("Enter Your Address");
-            string Address = Console.ReadLine();
-            Console.WriteLine("Enter Your City");
-            string City = Console.ReadLine();
-            Console.WriteLine("Enter Your State");
-            string State = Console.ReadLine();
-            Console.WriteLine("Enter Your Zipcode");
-            string Zipcode = Console.ReadLine();
-            Console.WriteLine("Enter Your Phone number");
-            string PhoneNumber = Console.ReadLine();
-            Console.WriteLine("Enter Your Email Id");
-            string EmailId = Console.ReadLine();
+                details.AddDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
+                details.ComputeDetails();
+            }
         }
     }
 }
-
-
