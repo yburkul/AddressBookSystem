@@ -65,28 +65,34 @@ namespace AddressBook
             contactDetailsList.Add(contactDetails);
             contactDetailsMap.Add(FirstName, contactDetails);
         }
-
-        public void EditDetails(string First_Name)
+        public void EditDetails(string key)
         {
-            Console.WriteLine("Enter Your First name");
-            string FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Your Last name");
-            string LastName = Console.ReadLine();
-            Console.WriteLine("Enter Your Address");
-            string Address = Console.ReadLine();
-            Console.WriteLine("Enter Your City");
-            string City = Console.ReadLine();
-            Console.WriteLine("Enter Your State");
-            string State = Console.ReadLine();
-            Console.WriteLine("Enter Your Zipcode");
-            int Zipcode = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Your Phone number");
-            int PhoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Your Email Id");
-            string EmailId = Console.ReadLine();
-            ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
-            contactDetailsList.Add(contactDetails);
-            contactDetailsMap[First_Name] = contactDetails;
+            if(contactDetailsMap.ContainsKey(key))
+            {
+                Console.WriteLine("Enter Your First name");
+                string FirstName = Console.ReadLine();
+                Console.WriteLine("Enter Your Last name");
+                string LastName = Console.ReadLine();
+                Console.WriteLine("Enter Your Address");
+                string Address = Console.ReadLine();
+                Console.WriteLine("Enter Your City");
+                string City = Console.ReadLine();
+                Console.WriteLine("Enter Your State");
+                string State = Console.ReadLine();
+                Console.WriteLine("Enter Your Zipcode");
+                int Zipcode = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Your Phone number");
+                int PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Your Email Id");
+                string EmailId = Console.ReadLine();
+                ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
+                contactDetailsList.Add(contactDetails);
+                contactDetailsMap[key] = contactDetails;
+            }
+            else
+            {
+                Console.WriteLine("Key not found");
+            }
         }
         public void ComputeDetails()
         {
@@ -102,10 +108,10 @@ namespace AddressBook
             Program details = new Program();
             do
             {
-                Console.WriteLine("Choose 1: To Add a Contact Details");
-                Console.WriteLine("Choose 2: To Compute Details");
-                Console.WriteLine("Choose 3: To Edit a Contact Details");
-                //Console.WriteLine("Choose 0: To Exit");
+                Console.WriteLine("1: To Add a Contact Details");
+                Console.WriteLine("2: To Compute Details");
+                Console.WriteLine("3: To Edit a Contact Details");
+                Console.WriteLine("0: To Exit");
 
                 try
                 {
@@ -120,8 +126,11 @@ namespace AddressBook
                             continue;
                         case 3:
                             Console.WriteLine("Enter a First Name to Edit");
-                            string First_Name = Console.ReadLine();
-                            details.EditDetails(First_Name);
+                            string key = Console.ReadLine();
+                            details.EditDetails(key);
+                            break;
+                        case 0:
+                            Console.WriteLine("Exit");
                             break;
                         default:
                             Console.WriteLine("Wrong key");
