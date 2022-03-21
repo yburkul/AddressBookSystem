@@ -26,48 +26,24 @@ namespace AddressBook
             this.PhoneNumber = PhoneNumber;
             this.EmailId = EmailId;
         }
-        public string toString()
+        public override string ToString()
         {
             return " Details of " + FirstName + " " + LastName + " are: " + "Address: " + Address + " City: " + City + "\n"
                                   + "                                   " + " State:   " + State + " Zipcode: " + Zipcode + "\n"
                                   + "                                   " + "Phone Number:" + PhoneNumber + "\n"
                                   + "                                   " + "EmailId: " + EmailId;
         }
-    }
-    class Program
-    {
-        private ArrayList contactDetailsList;
-        private Dictionary<string, ContactDetails> contactDetailsMap;
-        public Program()
+
+        class Program
         {
-            contactDetailsList = new ArrayList();
-            contactDetailsMap = new Dictionary<string, ContactDetails>();
-        }
-        public void AddDetails()
-        {
-            Console.WriteLine("Enter Your First name");
-            string FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Your Last name");
-            string LastName = Console.ReadLine();
-            Console.WriteLine("Enter Your Address");
-            string Address = Console.ReadLine();
-            Console.WriteLine("Enter Your City");
-            string City = Console.ReadLine();
-            Console.WriteLine("Enter Your State");
-            string State = Console.ReadLine();
-            Console.WriteLine("Enter Your Zipcode");
-            int Zipcode = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Your Phone number");
-            int PhoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Your Email Id");
-            string EmailId = Console.ReadLine();
-            ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
-            contactDetailsList.Add(contactDetails);
-            contactDetailsMap.Add(FirstName, contactDetails);
-        }
-        public void EditDetails(string key)
-        {
-            if(contactDetailsMap.ContainsKey(key))
+            private ArrayList contactDetailsList;
+            private Dictionary<string, ContactDetails> contactDetailsMap;
+            public Program()
+            {
+                contactDetailsList = new ArrayList();
+                contactDetailsMap = new Dictionary<string, ContactDetails>();
+            }
+            public void AddDetails()
             {
                 Console.WriteLine("Enter Your First name");
                 string FirstName = Console.ReadLine();
@@ -87,62 +63,104 @@ namespace AddressBook
                 string EmailId = Console.ReadLine();
                 ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
                 contactDetailsList.Add(contactDetails);
-                contactDetailsMap[key] = contactDetails;
+                contactDetailsMap.Add(FirstName, contactDetails);
             }
-            else
+            public void ComputeDetails()
             {
-                Console.WriteLine("Key not found");
-            }
-        }
-        public void ComputeDetails()
-        {
-            foreach (ContactDetails contact in contactDetailsList)
-            {
-                Console.WriteLine(contact.toString());
-            }
-        }
-        public static void Main(string[] args)
-        {
-            int option = 0;
-            Console.WriteLine("Welcome To Address Book");
-            Program details = new Program();
-            do
-            {
-                Console.WriteLine("1: To Add a Contact Details");
-                Console.WriteLine("2: To Compute Details");
-                Console.WriteLine("3: To Edit a Contact Details");
-                Console.WriteLine("0: To Exit");
-
-                try
+                foreach (KeyValuePair<string, ContactDetails> item in contactDetailsMap)
                 {
-                    option = int.Parse(Console.ReadLine());
-                    switch (option)
+                    Console.WriteLine(item.Value);
+                }
+            }
+            public void EditDetails(string key)
+            {
+                if (contactDetailsMap.ContainsKey(key))
+                {
+                    Console.WriteLine("Enter Your First name");
+                    string FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter Your Last name");
+                    string LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Your Address");
+                    string Address = Console.ReadLine();
+                    Console.WriteLine("Enter Your City");
+                    string City = Console.ReadLine();
+                    Console.WriteLine("Enter Your State");
+                    string State = Console.ReadLine();
+                    Console.WriteLine("Enter Your Zipcode");
+                    int Zipcode = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Your Phone number");
+                    int PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Your Email Id");
+                    string EmailId = Console.ReadLine();
+                    ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
+                    contactDetailsList.Add(contactDetails);
+                    contactDetailsMap[key] = contactDetails;
+                }
+                else
+                {
+                    Console.WriteLine("Key not found");
+                }
+            }
+            public void DeleteContact()
+            {
+                Console.WriteLine("Enter The Key to Delete Contact ");
+                string input = Console.ReadLine();
+                if (contactDetailsMap.ContainsKey(input.ToLower()))
+                {
+                    contactDetailsMap.Remove(input.ToLower());
+                }
+                else
+                {
+                    Console.WriteLine("Key not found");
+                }
+            }
+            public static void Main(string[] args)
+            {
+                int option = 0;
+                Console.WriteLine("Welcome To Address Book");
+                Program details = new Program();
+                do
+                {
+                    Console.WriteLine("1: To Add a Contact Details");
+                    Console.WriteLine("2: To Compute Details");
+                    Console.WriteLine("3: To Edit a Contact Details");
+                    Console.WriteLine("4: To Delete Contact");
+                    Console.WriteLine("0: To Exit");
+
+                    try
                     {
-                        case 1:
-                            details.AddDetails();
-                            continue;
-                        case 2:
-                            details.ComputeDetails();
-                            continue;
-                        case 3:
-                            Console.WriteLine("Enter a First Name to Edit");
-                            string key = Console.ReadLine();
-                            details.EditDetails(key);
-                            break;
-                        case 0:
-                            Console.WriteLine("Exit");
-                            break;
-                        default:
-                            Console.WriteLine("Wrong key");
-                            break;
+                        option = int.Parse(Console.ReadLine());
+                        switch (option)
+                        {
+                            case 1:
+                                details.AddDetails();
+                                continue;
+                            case 2:
+                                details.ComputeDetails();
+                                continue;
+                            case 3:
+                                Console.WriteLine("Enter a First Name to Edit");
+                                string key = Console.ReadLine();
+                                details.EditDetails(key);
+                                break;
+                            case 4:
+                                details.DeleteContact();
+                                break;
+                            case 0:
+                                Console.WriteLine("Exit");
+                                break;
+                            default:
+                                Console.WriteLine("Wrong key");
+                                break;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Please choose option");
                     }
                 }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please choose option");
-                }
+                while (option != 0);
             }
-            while (option != 0);
         }
     }
 }
