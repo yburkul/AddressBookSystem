@@ -44,25 +44,31 @@ namespace AddressBook
             }
             public void AddDetails()
             {
-                Console.WriteLine("Enter Your First name");
-                string FirstName = Console.ReadLine();
-                Console.WriteLine("Enter Your Last name");
-                string LastName = Console.ReadLine();
-                Console.WriteLine("Enter Your Address");
-                string Address = Console.ReadLine();
-                Console.WriteLine("Enter Your City");
-                string City = Console.ReadLine();
-                Console.WriteLine("Enter Your State");
-                string State = Console.ReadLine();
-                Console.WriteLine("Enter Your Zipcode");
-                int Zipcode = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter Your Phone number");
-                int PhoneNumber = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter Your Email Id");
-                string EmailId = Console.ReadLine();
-                ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
-                contactDetailsList.Add(contactDetails);
-                contactDetailsMap.Add(FirstName, contactDetails);
+                int noOfPersons;
+                Console.WriteLine("Enter a number of Persons to Add");
+                noOfPersons = int.Parse(Console.ReadLine());
+                for (int i = 1; i <= noOfPersons; i++)
+                {
+                    Console.WriteLine("Enter Your First name");
+                    string FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter Your Last name");
+                    string LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Your Address");
+                    string Address = Console.ReadLine();
+                    Console.WriteLine("Enter Your City");
+                    string City = Console.ReadLine();
+                    Console.WriteLine("Enter Your State");
+                    string State = Console.ReadLine();
+                    Console.WriteLine("Enter Your Zipcode");
+                    int Zipcode = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Your Phone number");
+                    int PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Your Email Id");
+                    string EmailId = Console.ReadLine();
+                    ContactDetails contactDetails = new ContactDetails(FirstName, LastName, Address, City, State, Zipcode, PhoneNumber, EmailId);
+                    contactDetailsList.Add(contactDetails);
+                    contactDetailsMap.Add(FirstName, contactDetails);
+                }
             }
             public void ComputeDetails()
             {
@@ -104,9 +110,9 @@ namespace AddressBook
             {
                 Console.WriteLine("Enter The Key to Delete Contact ");
                 string input = Console.ReadLine();
-                if (contactDetailsMap.ContainsKey(input.ToLower()))
+                if (contactDetailsMap.ContainsKey(input))
                 {
-                    contactDetailsMap.Remove(input.ToLower());
+                    contactDetailsMap.Remove(input);
                 }
                 else
                 {
@@ -133,10 +139,10 @@ namespace AddressBook
                         {
                             case 1:
                                 details.AddDetails();
-                                break;
+                                continue;
                             case 2:
                                 details.ComputeDetails();
-                                break;
+                                continue;
                             case 3:
                                 Console.WriteLine("Enter a First Name to Edit");
                                 string key = Console.ReadLine();
@@ -160,6 +166,8 @@ namespace AddressBook
                 }
                 while (option != 0);
             }
+        
         }
+
     }
 }
