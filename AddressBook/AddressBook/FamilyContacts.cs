@@ -9,11 +9,11 @@ namespace AddressBook
 {
     internal class FamilyContacts
     {
-        private ArrayList contactDetailsList;
+        private List<ContactDetails> contactDetailsList;
         private Dictionary<string, ContactDetails> contactDetailsMap;
         public FamilyContacts()
         {
-            contactDetailsList = new ArrayList();
+            contactDetailsList = new List<ContactDetails>();
             contactDetailsMap = new Dictionary<string, ContactDetails>();
         }
         public void AddDetails()
@@ -91,6 +91,15 @@ namespace AddressBook
             else
             {
                 Console.WriteLine("Key not found");
+            }
+        }
+        public void SearchPerson(string City)
+        {
+            var list = contactDetailsList.FindAll(x => x.City == City);
+            Console.WriteLine("Details of people who live in city: ");
+            foreach (var contactDetailsListMap in list)
+            {
+                Console.WriteLine(contactDetailsListMap);
             }
         }
     }

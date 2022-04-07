@@ -9,11 +9,12 @@ namespace AddressBook
 {
     public class OfficeContacts
     {
-        private ArrayList contactDetailsList;
+        private List<ContactDetails> contactDetailsList;
+        //private ArrayList contactDetailsList;
         private Dictionary<string, ContactDetails> contactDetailsMap;
         public OfficeContacts()
         {
-            contactDetailsList = new ArrayList();
+            contactDetailsList = new List<ContactDetails>();
             contactDetailsMap = new Dictionary<string, ContactDetails>();
         }
         public void AddDetails()
@@ -92,6 +93,36 @@ namespace AddressBook
             {
                 Console.WriteLine("Key not found");
             }
+        }
+        public void SearchPerson(string City)
+        {
+            var list = contactDetailsList.FindAll(x => x.City == City );
+            Console.WriteLine("Details of people who live in city: ");
+            foreach (var contactDetailsListMap in list)
+            {
+                Console.WriteLine(contactDetailsListMap);
+            }
+        }
+
+        public void Countperson()
+        {
+            Console.WriteLine("Count Person-City and state wise:");
+            Console.WriteLine("Enter City");
+            string City = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            string State = Console.ReadLine();
+            var lists = contactDetailsList.FindAll(x => (x.City == City && x.State == State));
+           // var set = new List<contactDetailsList>();
+            foreach (var contactDetailsListMap in lists)
+            {
+
+                Console.WriteLine(contactDetailsListMap);
+
+            }
+            var result= lists.Count;
+            //Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Total Persons in {City} & {State}:" + result);
+           // Console.ResetColor();
         }
     }
 }

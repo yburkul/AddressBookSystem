@@ -28,7 +28,9 @@ namespace AddressBook
                             Console.WriteLine("2: To Compute Details");
                             Console.WriteLine("3: To Edit a Contact Details");
                             Console.WriteLine("4: To Delete Contact");
-                            Console.WriteLine("5: To Exit");
+                            Console.WriteLine("5: To Search Person by using City Name");
+                            Console.WriteLine("6: To count");
+                            Console.WriteLine("7: To Exit");
                             try
                             {
                                 option = int.Parse(Console.ReadLine());
@@ -49,6 +51,14 @@ namespace AddressBook
                                         office.DeleteContact();
                                         break;
                                     case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        office.SearchPerson(city);
+                                        break;
+                                    case 6:
+                                        office.Countperson();
+                                        break;
+                                    case 7:
                                         Console.WriteLine("Exit");
                                         break;
                                     default:
@@ -72,7 +82,8 @@ namespace AddressBook
                             Console.WriteLine("2: To Compute Details");
                             Console.WriteLine("3: To Edit a Contact Details");
                             Console.WriteLine("4: To Delete Contact");
-                            Console.WriteLine("5: To Exit");
+                            Console.WriteLine("5: To Search Person by using City Name");
+                            Console.WriteLine("6: To Exit");
 
 
                             try
@@ -95,6 +106,11 @@ namespace AddressBook
                                         family.DeleteContact();
                                         break;
                                     case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        family.SearchPerson(city);
+                                        break;
+                                    case 6:
                                         Console.WriteLine("Exit");
                                         break;
                                     default:

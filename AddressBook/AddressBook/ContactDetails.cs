@@ -8,14 +8,14 @@ namespace AddressBook
 {
     class ContactDetails
     {
-        public string FirstName;
-        public string LastName;
-        public string Address;
-        public string City;
-        public string State;
-        public int Zipcode;
-        public int PhoneNumber;
-        public string EmailId;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int Zipcode { get; set; }
+        public int PhoneNumber { get; set; }
+        public string EmailId { get; set; }
         public ContactDetails(string FirstName, string LastName, string Address, string City, string State, int Zipcode, int PhoneNumber, string EmailId)
         {
             this.FirstName = FirstName;
