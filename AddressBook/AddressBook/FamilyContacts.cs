@@ -102,5 +102,22 @@ namespace AddressBook
                 Console.WriteLine(contactDetailsListMap);
             }
         }
+        public void Countperson()
+        {
+            Console.WriteLine("Count Person-City and state wise:");
+            Console.WriteLine("Enter City");
+            string City = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            string State = Console.ReadLine();
+            var lists = contactDetailsList.FindAll(x => (x.City == City && x.State == State));
+            foreach (var contactDetailsListMap in lists)
+            {
+
+                Console.WriteLine(contactDetailsListMap);
+
+            }
+            var result = lists.Count;
+            Console.WriteLine($"Total Persons in {City} & {State}:" + result);
+        }
     }
 }

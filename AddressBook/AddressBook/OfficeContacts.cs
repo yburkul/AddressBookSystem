@@ -10,7 +10,6 @@ namespace AddressBook
     public class OfficeContacts
     {
         private List<ContactDetails> contactDetailsList;
-        //private ArrayList contactDetailsList;
         private Dictionary<string, ContactDetails> contactDetailsMap;
         public OfficeContacts()
         {
@@ -103,7 +102,6 @@ namespace AddressBook
                 Console.WriteLine(contactDetailsListMap);
             }
         }
-
         public void Countperson()
         {
             Console.WriteLine("Count Person-City and state wise:");
@@ -112,7 +110,6 @@ namespace AddressBook
             Console.WriteLine("Enter state");
             string State = Console.ReadLine();
             var lists = contactDetailsList.FindAll(x => (x.City == City && x.State == State));
-           // var set = new List<contactDetailsList>();
             foreach (var contactDetailsListMap in lists)
             {
 
@@ -120,9 +117,7 @@ namespace AddressBook
 
             }
             var result= lists.Count;
-            //Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Total Persons in {City} & {State}:" + result);
-           // Console.ResetColor();
         }
     }
 }

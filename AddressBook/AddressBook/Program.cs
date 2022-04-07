@@ -29,7 +29,7 @@ namespace AddressBook
                             Console.WriteLine("3: To Edit a Contact Details");
                             Console.WriteLine("4: To Delete Contact");
                             Console.WriteLine("5: To Search Person by using City Name");
-                            Console.WriteLine("6: To count");
+                            Console.WriteLine("6: To Count the Person by using City and State Name");
                             Console.WriteLine("7: To Exit");
                             try
                             {
@@ -83,7 +83,8 @@ namespace AddressBook
                             Console.WriteLine("3: To Edit a Contact Details");
                             Console.WriteLine("4: To Delete Contact");
                             Console.WriteLine("5: To Search Person by using City Name");
-                            Console.WriteLine("6: To Exit");
+                            Console.WriteLine("6: To Count the Person by using City and State Name");
+                            Console.WriteLine("7: To Exit");
 
 
                             try
@@ -111,6 +112,9 @@ namespace AddressBook
                                         family.SearchPerson(city);
                                         break;
                                     case 6:
+                                        family.Countperson();
+                                        break;
+                                    case 7:
                                         Console.WriteLine("Exit");
                                         break;
                                     default:
