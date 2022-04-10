@@ -127,5 +127,40 @@ namespace AddressBook
                 Console.WriteLine(item.Value);
             }
         }
+        public void SortByCityStateAndZip()
+        {
+            Console.WriteLine("Choose The option for Sorting The Contact");
+            Console.WriteLine("1: Sort by City");
+            Console.WriteLine("2: Sort by State");
+            Console.WriteLine("3: Sort by Zip");
+            int input = int.Parse(Console.ReadLine());
+            switch (input)
+            {
+                case 1:
+                    var sortByCity = contactDetailsMap.OrderBy(x => x.Value.City).ToList();
+                    foreach (var item in sortByCity)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                    break;
+                case 2:
+                    var sortByState = contactDetailsMap.OrderBy(x => x.Value.State).ToList();
+                    foreach (var item in sortByState)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                    break;
+                case 3:
+                    var sortByZip = contactDetailsMap.OrderBy(x => x.Value.Zipcode).ToList();
+                    foreach (var item in sortByZip)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Please choose correct option");
+                    break;
+            }
+        }
     }
 }
