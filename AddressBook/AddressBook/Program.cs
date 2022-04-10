@@ -30,7 +30,8 @@ namespace AddressBook
                             Console.WriteLine("4: To Delete Contact");
                             Console.WriteLine("5: To Search Person by using City Name");
                             Console.WriteLine("6: To Count the Person by using City and State Name");
-                            Console.WriteLine("7: To Exit");
+                            Console.WriteLine("7: To Sort by Person Name");
+                            Console.WriteLine("0: To Exit");
                             try
                             {
                                 option = int.Parse(Console.ReadLine());
@@ -59,6 +60,9 @@ namespace AddressBook
                                         office.Countperson();
                                         break;
                                     case 7:
+                                        office.SortByPersonName();
+                                        break;
+                                    case 0:
                                         Console.WriteLine("Exit");
                                         break;
                                     default:
@@ -84,7 +88,8 @@ namespace AddressBook
                             Console.WriteLine("4: To Delete Contact");
                             Console.WriteLine("5: To Search Person by using City Name");
                             Console.WriteLine("6: To Count the Person by using City and State Name");
-                            Console.WriteLine("7: To Exit");
+                            Console.WriteLine("7: To Sort by Person Name");
+                            Console.WriteLine("0: To Exit");
 
 
                             try
@@ -115,6 +120,9 @@ namespace AddressBook
                                         family.Countperson();
                                         break;
                                     case 7:
+                                        family.SortByPersonName();
+                                        break;
+                                    case 0:
                                         Console.WriteLine("Exit");
                                         break;
                                     default:

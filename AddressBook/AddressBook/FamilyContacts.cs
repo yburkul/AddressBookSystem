@@ -119,5 +119,13 @@ namespace AddressBook
             var result = lists.Count;
             Console.WriteLine($"Total Persons in {City} & {State}:" + result);
         }
+        public void SortByPersonName()
+        {
+            var sortList = contactDetailsMap.OrderBy(x => x.Value.FirstName).ToList();
+            foreach (var item in sortList)
+            {
+                Console.WriteLine(item.Value);
+            }
+        }
     }
 }
