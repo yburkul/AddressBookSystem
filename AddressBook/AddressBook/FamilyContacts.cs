@@ -162,5 +162,42 @@ namespace AddressBook
                     break;
             }
         }
+        public void AddContactDetailsInFile()
+        {
+            string Write = @"D:\Bridglabz\AddressBookSystem\AddressBook\AddressBook\TextFile\FamilyContactAddressBook.txt";
+            using (StreamWriter streamWriter = File.AppendText(Write))
+            {
+                foreach (var contact in contactDetailsMap)
+                {
+                    streamWriter.WriteLine(contact.ToString());
+                }
+                streamWriter.Close();
+            }
+        }
+        public void ReadFile()
+        {
+            string InputFile = @"D:\Bridglabz\AddressBookSystem\AddressBook\AddressBook\TextFile\FamilyContactAddressBook.txt";
+            string file = File.ReadAllText(InputFile);
+            Console.WriteLine(file);
+        }
+        public void WriteAndReadFile()
+        {
+            Console.WriteLine("Choose The option for Write and Read File");
+            Console.WriteLine("1: To Add Contact In File");
+            Console.WriteLine("2: To Read a File");
+            int option = int.Parse(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    AddContactDetailsInFile();
+                    break;
+                case 2:
+                    ReadFile();
+                    break;
+                default:
+                    Console.WriteLine("Please choose correct option");
+                    break;
+            }
+        }
     }
 }

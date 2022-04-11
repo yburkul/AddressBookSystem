@@ -1,0 +1,12 @@
+[Yogesh,  Details of Yogesh Burkul are: Address: Asola City: Buldana
+                                    State:   Maharshtra Zipcode: 4433
+                                   Phone Number:8866544
+                                   EmailId: yburkul123@gmail.com]
+[Ganesh,  Details of Ganesh Shelke are: Address: Jalna' City: jalna
+                                    State:   mh Zipcode: 2233
+                                   Phone Number:4567854
+                                   EmailId: ganesh@gmail.com]
+[Atish,  Details of Atish Deshmukh are: Address: Akola City: Buldana
+                                    State:   Mh Zipcode: 1122
+                                   Phone Number:887766
+                                   EmailId: atish@gmail,com]

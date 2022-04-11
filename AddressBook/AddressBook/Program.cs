@@ -32,6 +32,7 @@ namespace AddressBook
                             Console.WriteLine("6: To Count the Person by using City and State Name");
                             Console.WriteLine("7: To Sort by Person Name");
                             Console.WriteLine("8: To Sort by City, State, or Zip");
+                            Console.WriteLine("9: To Read Contact Details by using File IO");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -66,6 +67,9 @@ namespace AddressBook
                                     case 8:
                                         office.SortByCityStateAndZip();
                                         break;
+                                    case 9:
+                                        office.WriteAndReadFile();
+                                        break;
                                     case 0:
                                         Console.WriteLine("Exit");
                                         break;
@@ -94,6 +98,7 @@ namespace AddressBook
                             Console.WriteLine("6: To Count the Person by using City and State Name");
                             Console.WriteLine("7: To Sort by Person Name");
                             Console.WriteLine("8: To Sort by City, State, or Zip");
+                            Console.WriteLine("9: To Read Contact Details by using File IO");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -127,6 +132,9 @@ namespace AddressBook
                                         break;
                                     case 8:
                                         family.SortByCityStateAndZip();
+                                        break;
+                                    case 9:
+                                        family.WriteAndReadFile();
                                         break;
                                     case 0:
                                         Console.WriteLine("Exit");
