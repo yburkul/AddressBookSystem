@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AddressBook
 {
-    internal class Program
+    class Program
     {
         public static void Main(string[] args)
         {
@@ -33,6 +33,7 @@ namespace AddressBook
                             Console.WriteLine("7: To Sort by Person Name");
                             Console.WriteLine("8: To Sort by City, State, or Zip");
                             Console.WriteLine("9: To Read Contact Details by using File IO");
+                            Console.WriteLine("10: To Read or Write in CSV File");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -70,6 +71,9 @@ namespace AddressBook
                                     case 9:
                                         office.WriteAndReadFile();
                                         break;
+                                    case 10:
+                                        office.WriteAndReadCSVFile();
+                                        break;
                                     case 0:
                                         Console.WriteLine("Exit");
                                         break;
@@ -99,6 +103,7 @@ namespace AddressBook
                             Console.WriteLine("7: To Sort by Person Name");
                             Console.WriteLine("8: To Sort by City, State, or Zip");
                             Console.WriteLine("9: To Read Contact Details by using File IO");
+                            Console.WriteLine("10: To Read or Write in CSV File");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -135,6 +140,9 @@ namespace AddressBook
                                         break;
                                     case 9:
                                         family.WriteAndReadFile();
+                                        break;
+                                    case 10:
+                                        family.WriteAndReadCSVFile();
                                         break;
                                     case 0:
                                         Console.WriteLine("Exit");

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -197,6 +199,29 @@ namespace AddressBook
                 default:
                     Console.WriteLine("Please choose correct option");
                     break;
+            }
+        }
+        public void WriteAndReadCSVFile()
+        {
+            string FilePath = @"D:\Bridglabz\AddressBookSystem\AddressBook\AddressBook\CSVFile\FamilyContactDetails.csv";
+            using (var writer = new StreamWriter(FilePath))
+            using (CsvWriter csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.WriteHeader<ContactDetails>();
+                foreach (var contact in contactDetailsList)
+                {
+                    csvWriter.NextRecord();
+                    csvWriter.WriteRecord(contact);
+                }
+            }
+            using (TextReader reader = new StreamReader(FilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<ContactDetails>().ToList();
+                foreach (ContactDetails contacts in records)
+                {
+                    Console.WriteLine(contacts);
+                }
             }
         }
     }
