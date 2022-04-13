@@ -1,10 +1,12 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AddressBook
@@ -222,6 +224,46 @@ namespace AddressBook
                 {
                     Console.WriteLine(contacts);
                 }
+            }
+        }
+        public void WriteJsonFile()
+        {
+            string JsonPath = @"D:\Bridglabz\AddressBookSystem\AddressBook\AddressBook\JsonFile\FamilyContact.json";
+            string jsonData = JsonConvert.SerializeObject(contactDetailsList);
+            using (StreamWriter writer = new StreamWriter(JsonPath))
+            {
+                writer.Flush();
+                writer.Write(jsonData);
+                Console.WriteLine(jsonData);
+            }
+        }
+        public void ReadJsonFile()
+        {
+            string JsonPath = @"D:\Bridglabz\AddressBookSystem\AddressBook\AddressBook\JsonFile\FamilyContact.json";
+            string result = File.ReadAllText(JsonPath);
+            var deserialise = JsonConvert.DeserializeObject<List<ContactDetails>>(result);
+            foreach (var contact in deserialise)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+        public void WriteAndReadJsonFile()
+        {
+            Console.WriteLine("Choose The option for Write and Read File");
+            Console.WriteLine("1: For Write Json File");
+            Console.WriteLine("2: For Read Json File");
+            int option = int.Parse(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    WriteJsonFile();
+                    break;
+                case 2:
+                    ReadJsonFile();
+                    break;
+                default:
+                    Console.WriteLine("Choose Correct option");
+                    break;
             }
         }
     }

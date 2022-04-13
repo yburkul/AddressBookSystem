@@ -34,6 +34,7 @@ namespace AddressBook
                             Console.WriteLine("8: To Sort by City, State, or Zip");
                             Console.WriteLine("9: To Read Contact Details by using File IO");
                             Console.WriteLine("10: To Read or Write in CSV File");
+                            Console.WriteLine("11: To Write And Read a Json File");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -74,6 +75,9 @@ namespace AddressBook
                                     case 10:
                                         office.WriteAndReadCSVFile();
                                         break;
+                                    case 11:
+                                        office.WriteAndReadJsonFile();
+                                        break;
                                     case 0:
                                         Console.WriteLine("Exit");
                                         break;
@@ -104,6 +108,7 @@ namespace AddressBook
                             Console.WriteLine("8: To Sort by City, State, or Zip");
                             Console.WriteLine("9: To Read Contact Details by using File IO");
                             Console.WriteLine("10: To Read or Write in CSV File");
+                            Console.WriteLine("11: To Write And Read a Json File");
                             Console.WriteLine("0: To Exit");
                             try
                             {
@@ -144,6 +149,9 @@ namespace AddressBook
                                     case 10:
                                         family.WriteAndReadCSVFile();
                                         break;
+                                    case 11:
+                                        family.WriteAndReadJsonFile();
+                                        break;                                 
                                     case 0:
                                         Console.WriteLine("Exit");
                                         break;
